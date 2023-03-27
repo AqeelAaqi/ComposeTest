@@ -6,19 +6,26 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.rounded.Add
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.evolvear.composetest.ui.theme.ComposeTestTheme
+import com.evolvear.composetest.utils.dummyData
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,7 +63,7 @@ class MainActivity : ComponentActivity() {
                         FloatingActionButton(onClick = {}) {
                             IconButton(onClick = { }) {
                                 Icon(
-                                    Icons.Filled.Add ,
+                                    Icons.Rounded.Add ,
                                     contentDescription = "add"
                                 )
                             }
@@ -64,7 +71,9 @@ class MainActivity : ComponentActivity() {
                     },
                     floatingActionButtonPosition = FabPosition.End,
                 ) {
-                    Greeting(name = "Android")
+//                    Greeting(name = "Android")
+//                    showSwitch()
+                    RecyclerViewData(dummyData())
                 }
 //                // A surface container using the 'background' color from the theme
 //                Surface(
@@ -84,6 +93,23 @@ fun Greeting(name: String) {
         Text(text = "Hello $name!", color = Color.Red)
 //        Text(text = "Aqeel $name!", color = Color.Red, style = TextStyle(fontWeight = FontWeight.ExtraBold) , softWrap = true)
     }
+}
+
+@Composable
+fun showSwitch(){
+    val isCHecked = remember {
+        mutableStateOf(true)
+    }
+    Switch(
+        checked = isCHecked.value,
+        onCheckedChange ={
+            isCHecked.value = it
+        },
+        modifier = Modifier.run {
+            size(20.dp)
+            padding(100.dp)
+        }
+    )
 }
 
 @Preview(showBackground = true, name = "light mode")
