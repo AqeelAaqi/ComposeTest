@@ -34,13 +34,13 @@ fun RecyclerViewData(dataItem : List<DataSource>){
             .fillMaxWidth(),
     ){
         items(dataItem){
-            eachRow(it)
+            EachRow(it)
         }
     }
 }
 
 @Composable
-fun eachRow(dataSource: DataSource){
+fun EachRow(dataSource: DataSource){
     Card(
         modifier = Modifier
             .padding(
