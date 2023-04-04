@@ -22,6 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.evolvear.composetest.Retrofit.Post
 import com.evolvear.composetest.utils.DataSource
 
 @Composable
@@ -35,6 +36,21 @@ fun RecyclerViewData(dataItem : List<DataSource>){
     ){
         items(dataItem){
             EachRow(it)
+        }
+    }
+}
+
+@Composable
+fun RecyclerViewRetrofit(dataItem : List<Post>){
+    val scrollState = rememberLazyListState()
+    LazyColumn(
+        state = scrollState,
+        modifier = Modifier
+            .background(Color.Transparent)
+            .fillMaxWidth(),
+    ){
+        items(dataItem){
+            RetrofitRow(it)
         }
     }
 }
@@ -68,6 +84,39 @@ fun EachRow(dataSource: DataSource){
                     )
             )
             Text(text = dataSource.description, modifier = Modifier.padding(8.dp), style = MaterialTheme.typography.caption)
+        }
+    }
+}
+
+@Composable
+fun RetrofitRow(dataSource: Post){
+    Card(
+        modifier = Modifier
+            .padding(
+                horizontal = 8.dp,
+                vertical = 8.dp
+            )
+            .fillMaxWidth(),
+        shape = RoundedCornerShape(CornerSize(10.dp)),
+        elevation = 2.dp,
+        border = BorderStroke(1.dp,Color.Black),
+        backgroundColor = MaterialTheme.colors.error
+    ) {
+        Row(
+            modifier = Modifier.padding(5.dp),
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.aqeel),
+                contentDescription = null,
+                modifier = Modifier
+                    .padding(8.dp)
+                    .size(80.dp)
+                    .align(Alignment.CenterVertically)
+                    .clip(
+                        RoundedCornerShape(CornerSize(10.dp))
+                    )
+            )
+            Text(text = dataSource.body, modifier = Modifier.padding(8.dp), style = MaterialTheme.typography.caption)
         }
     }
 }

@@ -4,10 +4,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -70,7 +67,8 @@ class MainActivity : ComponentActivity() {
                         }
                     },
                     floatingActionButtonPosition = FabPosition.End,
-                ) {
+                ) {contentPadding ->
+                    Box(modifier = Modifier.padding(contentPadding)) { /* ... */ }
 //                    Greeting(name = "Android")
 //                    showSwitch()
                     RecyclerViewData(dummyData())

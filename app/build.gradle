@@ -1,8 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.dagger.hilt.android'
     id 'kotlin-kapt'
-    id("com.google.dagger.hilt.android") version "2.44" apply false
 }
 
 android {
@@ -92,8 +92,8 @@ dependencies {
     // android ktx
     implementation 'androidx.activity:activity-ktx:1.5.1'
 
-    //hilt viewmodel
-    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
+    //hilt viewModel
+//    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:2.41'
 
     //pager
     implementation "com.google.accompanist:accompanist-pager:$accompanist_version"
